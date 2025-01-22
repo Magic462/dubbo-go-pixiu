@@ -103,12 +103,13 @@ func (dr *Descriptor) initDescriptorSource(cfg *Config) *Descriptor {
 }
 
 func (dr *Descriptor) getServerDescriptorSourceCtx(refCtx context.Context, cfg *Config) (DescriptorSource, error) {
-	var cc *grpc.ClientConn
-	var err error
-	gconn := refCtx.Value(ct.ContextKey(GrpcClientConnKey))
-	switch t := gconn.(type) {
+	var (
+		err error
+		cc  *grpc.ClientConn
+	)
+	switch t := refCtx.Value(ct.ContextKey(GrpcClientConnKey)).(type) {
 	case *grpc.ClientConn:
-		cc = gconn.(*grpc.ClientConn)
+		cc = t
 	case nil:
 		err = errors.New("the descriptor source not found!")
 	default:
@@ -117,19 +118,16 @@ func (dr *Descriptor) getServerDescriptorSourceCtx(refCtx context.Context, cfg *
 	return &serverSource{client: grpcreflect.NewClient(refCtx, reflectpb.NewServerReflectionClient(cc))}, err
 }
 
+// nolint
 func (dr *Descriptor) getServerDescriptorSource(refCtx context.Context, cc *grpc.ClientConn) DescriptorSource {
 	return &serverSource{client: grpcreflect.NewClient(refCtx, reflectpb.NewServerReflectionClient(cc))}
 }
 
 func (dr *Descriptor) getFileDescriptorCompose(ctx context.Context, cfg *Config) (DescriptorSource, error) {
-
-	var err error
-
 	if dr.fileSource == nil {
 		dr.initFileDescriptorSource(cfg)
 	}
-
-	return dr.fileSource, err
+	return dr.fileSource, nil
 }
 
 func (dr *Descriptor) initFileDescriptorSource(cfg *Config) *Descriptor {

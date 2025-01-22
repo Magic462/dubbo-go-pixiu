@@ -110,8 +110,7 @@ func (ls *HttpListenerService) httpsListener() {
 	hl := createDefaultHttpWorker(ls)
 
 	// user customize http config
-	var hc *model.HttpConfig
-	hc = model.MapInStruct(ls.Config)
+	hc := model.MapInStruct(ls.Config)
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", hl.ServeHTTP)
@@ -139,8 +138,7 @@ func (ls *HttpListenerService) httpListener() {
 	hl := createDefaultHttpWorker(ls)
 
 	// user customize http config
-	var hc *model.HttpConfig
-	hc = model.MapInStruct(ls.Config)
+	hc := model.MapInStruct(ls.Config)
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", hl.ServeHTTP)

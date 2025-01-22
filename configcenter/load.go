@@ -51,8 +51,8 @@ type (
 		Remote bool
 		DataId string
 		Group  string
-		path   string
-		parser string
+		path   string // nolint:unused
+		parser string // nolint:unused
 	}
 )
 

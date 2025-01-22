@@ -44,8 +44,7 @@ var (
 	config         *model.Bootstrap
 	configLoadFunc LoadFunc = LoadYAMLConfig
 
-	configCenterType map[string]interface{}
-	once             sync.Once
+	once sync.Once
 )
 
 // LoadFunc ConfigLoadFunc parse a input(usually file path) into a pixiu config
@@ -182,7 +181,7 @@ func GetDiscoveryType(cfg *model.Bootstrap) (err error) {
 }
 
 type ConfigManager struct {
-	path         string
+	path         string // nolint:unused
 	localConfig  *model.Bootstrap
 	remoteConfig *model.Bootstrap
 	load         configcenter.Load
@@ -227,22 +226,28 @@ func (m *ConfigManager) loadRemoteBootConfigs() *model.Bootstrap {
 	bootstrap := m.localConfig
 
 	// load remote
-	once.Do(func() {
-		m.load = configcenter.NewConfigLoad(bootstrap)
-	})
+	once.Do(
+		func() {
+			m.load = configcenter.NewConfigLoad(bootstrap)
+		},
+	)
 
-	configs, err := m.load.LoadConfigs(bootstrap, func(opt *configcenter.Options) {
-		opt.Remote = true
-	})
+	configs, err := m.load.LoadConfigs(
+		bootstrap, func(opt *configcenter.Options) {
+			opt.Remote = true
+		},
+	)
 
 	if err != nil {
 		panic(err)
 	}
 
-	err = mergo.Merge(configs, bootstrap, func(c *mergo.Config) {
-		c.Overwrite = false
-		c.AppendSlice = false
-	})
+	err = mergo.Merge(
+		configs, bootstrap, func(c *mergo.Config) {
+			c.Overwrite = false
+			c.AppendSlice = false
+		},
+	)
 
 	if err != nil {
 		panic(err)

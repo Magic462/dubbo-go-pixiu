@@ -87,8 +87,10 @@ func (asl *applicationServiceListener) WatchAndHandle() {
 				return
 			}
 			if failTimes > MaxFailTimes {
-				logger.Errorf("Error happens on (path{%s}) exceed max fail times: %v,so exit listen",
-					asl.servicePath, MaxFailTimes)
+				logger.Errorf(
+					"Error happens on (path{%s}) exceed max fail times: %v,so exit listen",
+					asl.servicePath, MaxFailTimes,
+				)
 				return
 			}
 			delayTimer.Reset(ConnDelay * time.Duration(failTimes))
@@ -113,8 +115,10 @@ func (asl *applicationServiceListener) waitEventAndHandlePeriod(children []strin
 		case <-ticker.C:
 			asl.handleEvent(children)
 		case zkEvent := <-e:
-			logger.Warnf("get a zookeeper e{type:%s, server:%s, path:%s, state:%d-%s, err:%s}",
-				zkEvent.Type.String(), zkEvent.Server, zkEvent.Path, zkEvent.State, zookeeper.StateToString(zkEvent.State), zkEvent.Err)
+			logger.Warnf(
+				"get a zookeeper e{type:%s, server:%s, path:%s, state:%d-%s, err:%s}",
+				zkEvent.Type.String(), zkEvent.Server, zkEvent.Path, zkEvent.State, zookeeper.StateToString(zkEvent.State), zkEvent.Err,
+			)
 			if zkEvent.Type != zk.EventNodeChildrenChanged {
 				return true
 			}
@@ -169,7 +173,7 @@ func (asl *applicationServiceListener) handleEvent(children []string) {
 				MapTo: "opt.types",
 			},
 		}
-		if methods != nil && len(methods) != 0 {
+		if len(methods) != 0 {
 			for i := range methods {
 				api := registry.CreateAPIConfig(apiPattern, location, bkConfig, methods[i], mappingParams)
 				if err := asl.adapterListener.OnAddAPI(api); err != nil {
@@ -211,7 +215,7 @@ func (asl *applicationServiceListener) getUrls(path string) []*dubboCommon.URL {
 		return nil
 	}
 	instance.SetServiceMetadata(metadataInfo)
-	urls := make([]*dubboCommon.URL, 0)
+	urls := make([]*dubboCommon.URL, 0, len(metadataInfo.Services))
 	for _, service := range metadataInfo.Services {
 		urls = append(urls, instance.ToURLs(service)...)
 	}
@@ -247,8 +251,6 @@ func toZookeeperInstance(cris *curator_discovery.ServiceInstance) dr.ServiceInst
 
 // getMethods return the methods of a service
 func (asl *applicationServiceListener) getMethods(in string) ([]string, error) {
-	methods := []string{}
-
 	path := strings.Join([]string{methodsRootPath, in}, constant.PathSlash)
 	data, err := asl.client.GetContent(path)
 	if err != nil {
@@ -261,8 +263,9 @@ func (asl *applicationServiceListener) getMethods(in string) ([]string, error) {
 		return nil, err
 	}
 
-	for _, m := range sd.Methods {
-		methods = append(methods, m.Name)
+	methods := make([]string, len(sd.Methods))
+	for i := range sd.Methods {
+		methods[i] = sd.Methods[i].Name
 	}
 	return methods, nil
 }

@@ -454,6 +454,7 @@ func getExtractMethodRegexp() *regexp.Regexp {
 	return regexp.MustCompile(".+/resources/([^/]+)/method/[^/]+/?$")
 }
 
+// nolint
 func getCheckRatelimitRegexp() *regexp.Regexp {
 	return regexp.MustCompile(".+/filter/ratelimit")
 }

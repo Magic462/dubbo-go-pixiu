@@ -162,7 +162,7 @@ func (cm *ClusterManager) PickEndpoint(clusterName string, policy model.LbPolicy
 }
 
 func (cm *ClusterManager) pickOneEndpoint(c *model.ClusterConfig, policy model.LbPolicy) *model.Endpoint {
-	if c.Endpoints == nil || len(c.Endpoints) == 0 {
+	if len(c.Endpoints) == 0 {
 		return nil
 	}
 

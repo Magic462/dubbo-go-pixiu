@@ -44,7 +44,7 @@ var (
 // Options defines the client option.
 type Options struct {
 	zkName string
-	ts     *zk.TestCluster
+	ts     *zk.TestCluster // nolint:unused
 }
 
 // Option defines the function to load the options
@@ -158,8 +158,10 @@ func (z *ZooKeeperClient) HandleZkEvent(s <-chan zk.Event) {
 		case <-z.exit:
 			return
 		case event = <-s:
-			logger.Infof("client{%s} get a zookeeper event{type:%s, server:%s, path:%s, state:%d-%s, err:%v}",
-				z.name, event.Type, event.Server, event.Path, event.State, StateToString(event.State), event.Err)
+			logger.Infof(
+				"client{%s} get a zookeeper event{type:%s, server:%s, path:%s, state:%d-%s, err:%v}",
+				z.name, event.Type, event.Server, event.Path, event.State, StateToString(event.State), event.Err,
+			)
 			switch event.State {
 			case zk.StateDisconnected:
 				logger.Warnf("zk{addr:%s} state is StateDisconnected, so close the zk client{name:%s}.", z.ZkAddrs, z.name)
@@ -170,8 +172,10 @@ func (z *ZooKeeperClient) HandleZkEvent(s <-chan zk.Event) {
 				z.eventRegistryLock.RLock()
 				for path, a := range z.eventRegistry {
 					if strings.HasPrefix(event.Path, path) {
-						logger.Infof("send event{state:zk.EventNodeDataChange, Path:%s} notify event to path{%s} related listener",
-							event.Path, path)
+						logger.Infof(
+							"send event{state:zk.EventNodeDataChange, Path:%s} notify event to path{%s} related listener",
+							event.Path, path,
+						)
 						for _, e := range a {
 							e <- event
 						}

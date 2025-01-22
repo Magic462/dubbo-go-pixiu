@@ -149,6 +149,7 @@ func buildAccessLogMsg(c *http.HttpContext, cost time.Duration) string {
 	return builder.String()
 }
 
+// nolint
 // converter interface to byte array
 func getBytes(key interface{}) ([]byte, error) {
 	var buf bytes.Buffer

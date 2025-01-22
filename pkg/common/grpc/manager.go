@@ -131,7 +131,10 @@ func (gcm *GrpcConnectionManager) response(w stdHttp.ResponseWriter, res *stdHtt
 	if err != nil {
 		return err
 	}
-	w.Write(bytes)
+
+	if _, err = w.Write(bytes); err != nil {
+		return err
+	}
 
 	for k, vv := range res.Trailer {
 		k = stdHttp.TrailerPrefix + k

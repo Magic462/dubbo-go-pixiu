@@ -39,7 +39,7 @@ import (
 // Node defines the single method of the router configured API
 type Node struct {
 	fullPath string
-	filters  []string
+	filters  []string // nolint:unused
 	method   *config.Method
 	headers  map[string]string
 }
@@ -134,8 +134,10 @@ func (rt *Route) PutAPI(api router.API) error {
 		_, _ = rt.tree.Put(key, rn)
 		return nil
 	}
-	return errors.Errorf("Method %s with address %s already exists in path %s",
-		api.Method.HTTPVerb, lowerCasePath, node.fullPath)
+	return errors.Errorf(
+		"Method %s with address %s already exists in path %s",
+		api.Method.HTTPVerb, lowerCasePath, node.fullPath,
+	)
 }
 
 // PutOrUpdateAPI puts or updates an api into the resource

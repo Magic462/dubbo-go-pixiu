@@ -19,7 +19,6 @@ package config
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"os"
 	"testing"
@@ -140,11 +139,9 @@ func TestLoad(t *testing.T) {
 	conf := Load("conf_test.yaml")
 	assert.Equal(t, 1, len(conf.StaticResources.Listeners))
 	assert.Equal(t, 1, len(conf.StaticResources.Clusters))
-	Adapter(&b)
+	assert.Nil(t, Adapter(&b))
 	str1, _ := json.Marshal(conf.StaticResources)
 	str2, _ := json.Marshal(b.StaticResources)
-	fmt.Println(string(str1))
-	fmt.Println(string(str2))
 	assert.Equal(t, string(str1), string(str2))
 }
 

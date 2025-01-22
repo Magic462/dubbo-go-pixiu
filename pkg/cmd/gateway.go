@@ -57,9 +57,6 @@ var (
 	logFormat string
 
 	limitCpus string
-
-	// Currently default set to false, wait for up coming support
-	initFromRemote = false
 )
 
 var (
@@ -191,6 +188,7 @@ func initLogWithConfig(boot *model.Bootstrap) {
 	}
 }
 
+// nolint
 // initApiConfig return value of the bool is for the judgment of whether is a api meta data error, a kind of silly (?)
 func initApiConfig() (*model.Bootstrap, error) {
 	bootstrap := config.Load(configPath)
