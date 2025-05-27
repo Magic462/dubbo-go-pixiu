@@ -19,6 +19,7 @@ package server
 
 import (
 	"fmt"
+	"strconv"
 	"sync"
 	"sync/atomic"
 )
@@ -26,6 +27,7 @@ import (
 import (
 	"github.com/apache/dubbo-go-pixiu/pkg/cluster"
 	"github.com/apache/dubbo-go-pixiu/pkg/cluster/loadbalancer"
+	"github.com/apache/dubbo-go-pixiu/pkg/common/constant"
 	"github.com/apache/dubbo-go-pixiu/pkg/common/yaml"
 	"github.com/apache/dubbo-go-pixiu/pkg/logger"
 	"github.com/apache/dubbo-go-pixiu/pkg/model"
@@ -33,7 +35,9 @@ import (
 )
 
 // generate cluster name for unnamed cluster
-var clusterIndex int32 = 1
+var (
+	clusterIndex int32 = 1
+)
 
 type (
 	ClusterManager struct {
@@ -216,16 +220,53 @@ func (cm *ClusterManager) HasCluster(clusterName string) bool {
 
 func (s *ClusterStore) AddCluster(c *model.ClusterConfig) {
 	if c.Name == "" {
-		index := atomic.AddInt32(&clusterIndex, 1)
-		c.Name = fmt.Sprintf("cluster%d", index)
+		c.Name = fmt.Sprintf("cluster-%d", clusterIndex)
+		atomic.AddInt32(&clusterIndex, 1)
 	}
+
+	s.AssembleClusterEndpoints(c)
+
 	s.Config = append(s.Config, c)
 	s.clustersMap[c.Name] = cluster.NewCluster(c)
 	c.CreateConsistentHash()
 }
 
-func (s *ClusterStore) UpdateCluster(new *model.ClusterConfig) {
+// AssembleClusterEndpoints assembles the cluster endpoints
+// by formatting the ID, name and domains for each endpoint
+// If endpoint.LLMMeta is not nil, the assimilation of name and domain is based on
+// the LLM provider denoted in the endpoint LLMMeta.
+func (s *ClusterStore) AssembleClusterEndpoints(c *model.ClusterConfig) {
+	if c == nil {
+		return
+	}
 
+	for i, endpoint := range c.Endpoints {
+		// If the endpoint ID is not set, set it to the index + 1
+		if endpoint.ID == "" {
+			endpoint.ID = strconv.Itoa(i + 1)
+		}
+
+		// If the endpoint has no name, set a default name
+		if endpoint.Name == "" && endpoint.LLMMeta != nil {
+			endpoint.Name = fmt.Sprintf("endpoint-%d#%s", i+1, endpoint.LLMMeta.Provider)
+		} else if endpoint.Name == "" && endpoint.LLMMeta == nil {
+			endpoint.Name = fmt.Sprintf("endpoint-%d", i+1)
+		}
+
+		// If the endpoint address and domain are not set, set them based on the LLM provider.
+		// If the endpoint address or domain is set, do not modify them.
+		if endpoint.LLMMeta != nil && endpoint.Address.Address == constant.PprofDefaultAddress && endpoint.Address.Domains == nil {
+			domain, err := model.GetLLMProviderDomains(endpoint.LLMMeta.Provider)
+			if err != nil {
+				logger.Errorf("failed to get llm provider domains, err: %v", err)
+				continue
+			}
+			endpoint.Address.Domains = []string{domain.BaseUrl}
+		}
+	}
+}
+
+func (s *ClusterStore) UpdateCluster(new *model.ClusterConfig) {
 	for i, c := range s.Config {
 		if c.Name == new.Name {
 			s.Config[i] = new
