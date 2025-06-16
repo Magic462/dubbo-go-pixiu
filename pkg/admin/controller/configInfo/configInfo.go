@@ -23,10 +23,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/apache/dubbo-go-pixiu/pkg/admin/config"
 	"github.com/apache/dubbo-go-pixiu/pkg/admin/logic"
 	"github.com/apache/dubbo-go-pixiu/pkg/common/yaml"
 	"github.com/apache/dubbo-go-pixiu/pkg/logger"
+	"github.com/dubbo-go-pixiu/pixiu-api/pkg/api/config"
 	fc "github.com/dubbo-go-pixiu/pixiu-api/pkg/api/config"
 	"github.com/gin-gonic/gin"
 	"github.com/pkg/errors"

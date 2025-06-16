@@ -22,7 +22,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/apache/dubbo-go-pixiu/pkg/admin/config"
+	"github.com/dubbo-go-pixiu/pixiu-api/pkg/api/config"
 
 	_ "github.com/go-sql-driver/mysql"
 )

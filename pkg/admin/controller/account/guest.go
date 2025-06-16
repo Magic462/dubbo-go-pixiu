@@ -22,11 +22,11 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/apache/dubbo-go-pixiu/pkg/admin/config"
 	"github.com/apache/dubbo-go-pixiu/pkg/admin/controller/auth"
 	"github.com/apache/dubbo-go-pixiu/pkg/admin/logic/account"
 	"github.com/apache/dubbo-go-pixiu/pkg/admin/utils"
 	"github.com/dgrijalva/jwt-go"
+	"github.com/dubbo-go-pixiu/pixiu-api/pkg/api/config"
 	"github.com/gin-gonic/gin"
 	"github.com/pkg/errors"
 )

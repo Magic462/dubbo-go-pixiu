@@ -22,8 +22,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/apache/dubbo-go-pixiu/pkg/admin/config"
 	"github.com/dgrijalva/jwt-go"
+	"github.com/dubbo-go-pixiu/pixiu-api/pkg/api/config"
 	"github.com/gin-gonic/gin"
 	"github.com/pkg/errors"
 )
