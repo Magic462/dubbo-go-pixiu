@@ -19,9 +19,12 @@ package impl
 
 import (
 	SQL "database/sql"
+)
 
+import (
 	"github.com/apache/dubbo-go-pixiu/pkg/admin/dao"
 	"github.com/apache/dubbo-go-pixiu/pkg/admin/dao/database"
+
 	"github.com/pkg/errors"
 )
 
