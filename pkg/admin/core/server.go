@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/apache/dubbo-go-pixiu/pkg/admin/config"
 	"github.com/apache/dubbo-go-pixiu/pkg/admin/global"
 	"github.com/apache/dubbo-go-pixiu/pkg/admin/initialize"
 	"github.com/apache/dubbo-go-pixiu/pkg/admin/logic/account"
-	"github.com/dubbo-go-pixiu/pixiu-api/pkg/api/config"
 	"go.uber.org/zap"
 	"v.marlon.life/toolkit/util"
 )

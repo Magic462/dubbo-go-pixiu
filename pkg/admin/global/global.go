@@ -5,7 +5,7 @@ import (
 
 	"go.uber.org/zap"
 
-	"github.com/dubbo-go-pixiu/pixiu-api/pkg/api/config"
+	"github.com/apache/dubbo-go-pixiu/pkg/admin/config"
 	"gorm.io/gorm"
 )
 

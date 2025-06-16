@@ -59,9 +59,9 @@ import (
 	"google.golang.org/protobuf/types/known/anypb"
 	"google.golang.org/protobuf/types/known/structpb"
 
-	"github.com/dubbogo/pixiu-admin/pkg/config"
-	"github.com/dubbogo/pixiu-admin/pkg/logger"
-	"github.com/dubbogo/pixiu-admin/pkg/logic"
+	"github.com/apache/dubbo-go-pixiu/pkg/admin/config"
+	"github.com/apache/dubbo-go-pixiu/pkg/admin/logic"
+	"github.com/apache/dubbo-go-pixiu/pkg/logger"
 	structpb2 "google.golang.org/protobuf/types/known/structpb"
 )
 

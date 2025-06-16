@@ -18,15 +18,20 @@
 package main
 
 import (
+	"github.com/apache/dubbo-go-pixiu/pkg/logger"
 	"os"
 	"os/signal"
 	"strconv"
 	"time"
+)
 
-	"github.com/apache/dubbo-go-pixiu/pkg/admin/core"
-	"github.com/apache/dubbo-go-pixiu/pkg/logger"
-	"github.com/dubbo-go-pixiu/pixiu-api/pkg/api/config"
+import (
 	"github.com/spf13/cobra"
+)
+
+import (
+	"github.com/apache/dubbo-go-pixiu/pkg/admin/config"
+	"github.com/apache/dubbo-go-pixiu/pkg/admin/core"
 )
 
 var (
