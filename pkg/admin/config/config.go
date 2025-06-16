@@ -3,11 +3,14 @@ package config
 import (
 	"strings"
 	"time"
+)
+
+import (
+	"github.com/apache/dubbo-go-pixiu/pkg/common/yaml"
+	"github.com/apache/dubbo-go-pixiu/pkg/logger"
 
 	etcdv3 "github.com/dubbogo/gost/database/kv/etcd/v3"
 
-	"github.com/apache/dubbo-go-pixiu/pkg/common/yaml"
-	"github.com/apache/dubbo-go-pixiu/pkg/logger"
 	perrors "github.com/pkg/errors"
 )
 
@@ -73,8 +76,8 @@ type BaseInfo struct {
 
 // RetData response data
 type RetData struct {
-	Code string      `json:"code" yaml:"code"`
-	Data interface{} `json:"data" yaml:"data"`
+	Code string `json:"code" yaml:"code"`
+	Data any    `json:"data" yaml:"data"`
 }
 
 // LoadAPIConfigFromFile load config from file

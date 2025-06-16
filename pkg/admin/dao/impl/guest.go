@@ -19,9 +19,12 @@ package impl
 
 import (
 	SQL "database/sql"
+)
 
+import (
 	"github.com/apache/dubbo-go-pixiu/pkg/admin/dao"
 	"github.com/apache/dubbo-go-pixiu/pkg/admin/dao/database"
+
 	"github.com/pkg/errors"
 )
 
@@ -36,7 +39,7 @@ func NewGuestDao() *GuestDao {
 	}
 }
 
-func (d *GuestDao) Create(db *SQL.DB) (interface{}, error) {
+func (d *GuestDao) Create(db *SQL.DB) (any, error) {
 	d.db = db
 	var i dao.GuestDao = d
 	return &i, nil

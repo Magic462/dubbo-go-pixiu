@@ -1,15 +1,16 @@
 package initialize
 
 import (
-	"github.com/gin-gonic/gin"
-
-	swaggerFiles "github.com/swaggo/files"
-	ginSwagger "github.com/swaggo/gin-swagger"
-
 	_ "github.com/apache/dubbo-go-pixiu/docs"
 	"github.com/apache/dubbo-go-pixiu/pkg/admin/controller/account"
 	"github.com/apache/dubbo-go-pixiu/pkg/admin/controller/auth"
 	"github.com/apache/dubbo-go-pixiu/pkg/admin/controller/configInfo"
+
+	"github.com/gin-gonic/gin"
+
+	swaggerFiles "github.com/swaggo/files"
+
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 // Routers init router

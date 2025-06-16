@@ -21,8 +21,10 @@ import (
 	"database/sql"
 	"fmt"
 	"sync"
+)
 
-	"github.com/dubbo-go-pixiu/pixiu-api/pkg/api/config"
+import (
+	"github.com/apache/dubbo-go-pixiu/pkg/admin/config"
 
 	_ "github.com/go-sql-driver/mysql"
 )

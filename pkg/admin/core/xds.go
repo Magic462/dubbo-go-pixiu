@@ -24,44 +24,37 @@ import (
 	"os"
 	"strconv"
 	"time"
+)
 
+import (
+	"github.com/apache/dubbo-go-pixiu/pkg/admin/config"
+	"github.com/apache/dubbo-go-pixiu/pkg/admin/logic"
 	"github.com/apache/dubbo-go-pixiu/pkg/common/constant"
+	"github.com/apache/dubbo-go-pixiu/pkg/logger"
 
 	fc "github.com/dubbo-go-pixiu/pixiu-api/pkg/api/config"
 	"github.com/dubbo-go-pixiu/pixiu-api/pkg/xds"
-
 	pixiupb "github.com/dubbo-go-pixiu/pixiu-api/pkg/xds/model"
 
 	core "github.com/envoyproxy/go-control-plane/envoy/config/core/v3"
-
 	clusterservice "github.com/envoyproxy/go-control-plane/envoy/service/cluster/v3"
-
 	discoverygrpc "github.com/envoyproxy/go-control-plane/envoy/service/discovery/v3"
-
 	endpointservice "github.com/envoyproxy/go-control-plane/envoy/service/endpoint/v3"
-
 	extensionpb "github.com/envoyproxy/go-control-plane/envoy/service/extension/v3"
-
 	listenerservice "github.com/envoyproxy/go-control-plane/envoy/service/listener/v3"
-
 	routeservice "github.com/envoyproxy/go-control-plane/envoy/service/route/v3"
-
 	runtimeservice "github.com/envoyproxy/go-control-plane/envoy/service/runtime/v3"
-
 	secretservice "github.com/envoyproxy/go-control-plane/envoy/service/secret/v3"
 	"github.com/envoyproxy/go-control-plane/pkg/cache/types"
 	"github.com/envoyproxy/go-control-plane/pkg/cache/v3"
 	"github.com/envoyproxy/go-control-plane/pkg/resource/v3"
-
 	envoyServer "github.com/envoyproxy/go-control-plane/pkg/server/v3"
+
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/keepalive"
+
 	"google.golang.org/protobuf/types/known/anypb"
 	"google.golang.org/protobuf/types/known/structpb"
-
-	"github.com/dubbogo/pixiu-admin/pkg/config"
-	"github.com/dubbogo/pixiu-admin/pkg/logger"
-	"github.com/dubbogo/pixiu-admin/pkg/logic"
 	structpb2 "google.golang.org/protobuf/types/known/structpb"
 )
 
@@ -178,21 +171,21 @@ func watchConfigAndReload() {
 
 // makeHTTPFilter returns a handler for the given resource.
 func makeHTTPFilter(listener fc.Listener) *pixiupb.FilterChain {
-	var filters, routes []interface{}
+	var filters, routes []any
 
 	for _, f := range listener.HTTPFilters {
-		filters = append(filters, map[string]interface{}{
+		filters = append(filters, map[string]any{
 			"name":   f.Name,
 			"config": f.Config,
 		})
 	}
 
 	for _, r := range listener.RouteConfig.Routes {
-		routes = append(filters, map[string]interface{}{
-			"match": map[string]interface{}{
+		routes = append(filters, map[string]any{
+			"match": map[string]any{
 				"prefix": r.Match.Prefix,
 			},
-			"route": map[string]interface{}{
+			"route": map[string]any{
 				"cluster":                         r.Route.Cluster,
 				"cluster_not_found_response_code": r.Route.ClusterNotFoundResponseCode,
 			},
@@ -205,8 +198,8 @@ func makeHTTPFilter(listener fc.Listener) *pixiupb.FilterChain {
 				Name: constant.HTTPConnectManagerFilter,
 				Config: &pixiupb.NetworkFilter_Struct{
 					Struct: func() *structpb.Struct {
-						v, err := structpb2.NewStruct(map[string]interface{}{
-							"route_config": map[string]interface{}{
+						v, err := structpb2.NewStruct(map[string]any{
+							"route_config": map[string]any{
 								"routes": routes,
 							},
 							"http_filters": filters,

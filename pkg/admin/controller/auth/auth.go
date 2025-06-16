@@ -21,10 +21,15 @@ import (
 	"log"
 	"net/http"
 	"time"
+)
+
+import (
+	"github.com/apache/dubbo-go-pixiu/pkg/admin/config"
 
 	"github.com/dgrijalva/jwt-go"
-	"github.com/dubbo-go-pixiu/pixiu-api/pkg/api/config"
+
 	"github.com/gin-gonic/gin"
+
 	"github.com/pkg/errors"
 )
 
@@ -102,7 +107,7 @@ func (j *JWT) CreateToken(claims CustomClaims) (string, error) {
 func (j *JWT) ParseToken(tokenString string) (*CustomClaims, error) {
 	// Input: token string, custom Claims structure object, custom function
 	// Parse the token string into jwt's Token structure pointer
-	token, err := jwt.ParseWithClaims(tokenString, &CustomClaims{}, func(token *jwt.Token) (interface{}, error) {
+	token, err := jwt.ParseWithClaims(tokenString, &CustomClaims{}, func(token *jwt.Token) (any, error) {
 		return j.SigningKey, nil
 	})
 	if err != nil {
@@ -132,7 +137,7 @@ func (j *JWT) RefreshToken(tokenString string) (string, error) {
 	jwt.TimeFunc = func() time.Time {
 		return time.Unix(0, 0)
 	}
-	token, err := jwt.ParseWithClaims(tokenString, &CustomClaims{}, func(token *jwt.Token) (interface{}, error) {
+	token, err := jwt.ParseWithClaims(tokenString, &CustomClaims{}, func(token *jwt.Token) (any, error) {
 		return j.SigningKey, nil
 	})
 	if err != nil {

@@ -20,10 +20,13 @@ package impl
 import (
 	"database/sql"
 	"time"
+)
 
+import (
 	"github.com/apache/dubbo-go-pixiu/pkg/admin/dao"
 	"github.com/apache/dubbo-go-pixiu/pkg/admin/dao/database"
 	"github.com/apache/dubbo-go-pixiu/pkg/admin/utils"
+
 	"github.com/pkg/errors"
 )
 
@@ -37,7 +40,7 @@ func NewUserDao() *UserDao {
 	}
 }
 
-func (d *UserDao) Create(db *sql.DB) (interface{}, error) {
+func (d *UserDao) Create(db *sql.DB) (any, error) {
 	d.db = db
 	var i dao.UserDao = d
 	return &i, nil
@@ -70,14 +73,14 @@ func (d *UserDao) EditPassword(oldPassword, newPassword, username string) (bool,
 	return true, err
 }
 
-func (d *UserDao) GetUserInfo(username string) (bool, interface{}, error) {
+func (d *UserDao) GetUserInfo(username string) (bool, any, error) {
 	db := d.db
 	var userId, role int
 	err := db.QueryRow("SELECT id, username, `role` FROM pixiu_user WHERE  username = ?", username).Scan(&userId, &username, &role)
 	if err != nil {
 		return false, "", errors.New("This user does not exist!")
 	}
-	userInfo := map[string]interface{}{
+	userInfo := map[string]any{
 		"userId":   userId,
 		"username": username,
 		"role":     role,
@@ -85,7 +88,7 @@ func (d *UserDao) GetUserInfo(username string) (bool, interface{}, error) {
 	return true, userInfo, err
 }
 
-func (d *UserDao) GetUserRole(username string) (bool, interface{}, error) {
+func (d *UserDao) GetUserRole(username string) (bool, any, error) {
 	db := d.db
 	var roleId int
 	var role, description string
@@ -97,7 +100,7 @@ func (d *UserDao) GetUserRole(username string) (bool, interface{}, error) {
 	if err != nil {
 		return false, "", err
 	}
-	result := map[string]interface{}{
+	result := map[string]any{
 		"role":        role,
 		"description": description,
 	}

@@ -1,11 +1,12 @@
 package global
 
 import (
+	"github.com/apache/dubbo-go-pixiu/pkg/admin/config"
+
 	"github.com/spf13/viper"
 
 	"go.uber.org/zap"
 
-	"github.com/dubbo-go-pixiu/pixiu-api/pkg/api/config"
 	"gorm.io/gorm"
 )
 

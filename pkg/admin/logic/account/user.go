@@ -21,11 +21,11 @@ func EditPassword(oldPassword, newPassword, username string) (bool, error) {
 	return userDao.EditPassword(oldPassword, newPassword, username)
 }
 
-func GetUserInfo(username string) (bool, interface{}, error) {
+func GetUserInfo(username string) (bool, any, error) {
 	return userDao.GetUserInfo(username)
 }
 
-func GetUserRole(username string) (bool, interface{}, error) {
+func GetUserRole(username string) (bool, any, error) {
 	return userDao.GetUserRole(username)
 }
 
