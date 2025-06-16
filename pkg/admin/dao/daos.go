@@ -32,9 +32,9 @@ type UserDao interface {
 	// EditPassword edit password
 	EditPassword(oldPassword, newPassword, username string) (bool, error)
 	// GetUserInfo get user info
-	GetUserInfo(username string) (bool, interface{}, error)
+	GetUserInfo(username string) (bool, any, error)
 	// GetUserRole get user role
-	GetUserRole(username string) (bool, interface{}, error)
+	GetUserRole(username string) (bool, any, error)
 	// CheckUserIsAdmin check user is admin
 	CheckUserIsAdmin(username string) (bool, error)
 }

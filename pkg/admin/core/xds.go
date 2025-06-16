@@ -171,21 +171,21 @@ func watchConfigAndReload() {
 
 // makeHTTPFilter returns a handler for the given resource.
 func makeHTTPFilter(listener fc.Listener) *pixiupb.FilterChain {
-	var filters, routes []interface{}
+	var filters, routes []any
 
 	for _, f := range listener.HTTPFilters {
-		filters = append(filters, map[string]interface{}{
+		filters = append(filters, map[string]any{
 			"name":   f.Name,
 			"config": f.Config,
 		})
 	}
 
 	for _, r := range listener.RouteConfig.Routes {
-		routes = append(filters, map[string]interface{}{
-			"match": map[string]interface{}{
+		routes = append(filters, map[string]any{
+			"match": map[string]any{
 				"prefix": r.Match.Prefix,
 			},
-			"route": map[string]interface{}{
+			"route": map[string]any{
 				"cluster":                         r.Route.Cluster,
 				"cluster_not_found_response_code": r.Route.ClusterNotFoundResponseCode,
 			},
@@ -198,8 +198,8 @@ func makeHTTPFilter(listener fc.Listener) *pixiupb.FilterChain {
 				Name: constant.HTTPConnectManagerFilter,
 				Config: &pixiupb.NetworkFilter_Struct{
 					Struct: func() *structpb.Struct {
-						v, err := structpb2.NewStruct(map[string]interface{}{
-							"route_config": map[string]interface{}{
+						v, err := structpb2.NewStruct(map[string]any{
+							"route_config": map[string]any{
 								"routes": routes,
 							},
 							"http_filters": filters,

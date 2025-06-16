@@ -30,6 +30,6 @@ func WithError(err error) RetData {
 }
 
 // WithRet transform data to RetData
-func WithRet(data interface{}) RetData {
+func WithRet(data any) RetData {
 	return RetData{Code: OK, Data: data}
 }

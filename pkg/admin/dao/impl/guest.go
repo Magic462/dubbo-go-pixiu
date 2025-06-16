@@ -39,7 +39,7 @@ func NewGuestDao() *GuestDao {
 	}
 }
 
-func (d *GuestDao) Create(db *SQL.DB) (interface{}, error) {
+func (d *GuestDao) Create(db *SQL.DB) (any, error) {
 	d.db = db
 	var i dao.GuestDao = d
 	return &i, nil

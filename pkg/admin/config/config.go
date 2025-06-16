@@ -76,8 +76,8 @@ type BaseInfo struct {
 
 // RetData response data
 type RetData struct {
-	Code string      `json:"code" yaml:"code"`
-	Data interface{} `json:"data" yaml:"data"`
+	Code string `json:"code" yaml:"code"`
+	Data any    `json:"data" yaml:"data"`
 }
 
 // LoadAPIConfigFromFile load config from file
