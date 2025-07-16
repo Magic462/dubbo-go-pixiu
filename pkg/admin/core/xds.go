@@ -261,7 +261,7 @@ func makeClusters() *pixiupb.PixiuExtensionClusters {
 			Name:    c.Name,
 			TypeStr: c.Type,
 			Endpoints: []*pixiupb.Endpoint{
-				&pixiupb.Endpoint{
+				{
 					Id: c.Name + strconv.Itoa(c.ID),
 					Address: &pixiupb.SocketAddress{
 						Address: c.Address,

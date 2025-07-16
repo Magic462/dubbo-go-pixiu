@@ -159,7 +159,7 @@ func BizSetResourceInfo(res *fc.Resource, created, unpublished bool) error {
 			return perrors.WithMessage(setErr, "BizSetResourceInfo error")
 		}
 
-		for i, _ := range methods {
+		for i := range methods {
 			methods[i].ResourcePath = res.Path
 		}
 		// create methods
