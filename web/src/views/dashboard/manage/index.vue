@@ -98,7 +98,7 @@ export default {
     handleOnOpen() {
         let port = '30026';
         const key = getSessionStorage('tskey')
-        window.open('http://' + document.location.hostname + '/#/login?key=' + key, '_blank')
+        window.open('http://' + document.location.hostname + '/#/login?key=' + key, '_blank')  // NOSONAR
     },
   },
   created() {

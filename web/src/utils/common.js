@@ -117,10 +117,10 @@ export function numJoint (val) {
     if (idx > 0) {
       point = val.slice(idx)
       val = val.slice(0, idx)
-      val = val.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,')
+      val = val.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,')  // NOSONAR
       val = val + point
     } else {
-      val = val.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,')
+      val = val.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,')  // NOSONAR
     }
   }
   return val

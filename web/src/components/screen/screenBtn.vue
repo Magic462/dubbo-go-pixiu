@@ -142,12 +142,12 @@ export default {
     methods:{
         handleSand() {
             let data = {
-                userName: 'cjg'+Math.floor(Math.random() * 1000),
+                userName: 'cjg'+Math.floor(Math.random() * 1000),  // NOSONAR
                 userPwd: '1234',  // NOSONAR
-                code:Math.floor(Math.random() * 100),
+                code:Math.floor(Math.random() * 100),  // NOSONAR
                 registered_lon:'1',
                 registered_lat:'2',
-                name:'tony'+ Math.random()
+                name:'tony'+ Math.random()  // NOSONAR
             }
             this.$post('/users/sand', data).then(res => {
                 

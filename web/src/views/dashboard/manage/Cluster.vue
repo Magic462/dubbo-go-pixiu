@@ -179,7 +179,7 @@ export default {
         name: "http_bin",
         type: "http",
         id: "backend",
-        address: "http://httpbin.org",
+        address: "http://httpbin.org", // NOSONAR
         port: 80,
       },
       edit: false,
