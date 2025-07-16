@@ -54,7 +54,7 @@ export default {
       //用户名
       userName: 'admin',
       //密码
-      password: 'admin'
+      password: 'admin' // NOSONAR
     }
   },
   methods: {

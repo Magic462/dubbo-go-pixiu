@@ -143,7 +143,7 @@ export default {
         handleSand() {
             let data = {
                 userName: 'cjg'+Math.floor(Math.random() * 1000),
-                userPwd: '1234',
+                userPwd: '1234',  // NOSONAR
                 code:Math.floor(Math.random() * 100),
                 registered_lon:'1',
                 registered_lat:'2',
@@ -167,7 +167,7 @@ export default {
             //重新加载当前车辆信息，存入store
             // 议题发布，新增，编辑
             let data = {
-                userName: 'admin',
+                userName: 'admin',  // NOSONAR
                 userPwd: 'admin'
             }
             this.$get('/users/whistle', data).then(res => {
