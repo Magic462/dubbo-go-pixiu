@@ -168,7 +168,7 @@ export default {
             // 议题发布，新增，编辑
             let data = {
                 userName: 'admin',  // NOSONAR
-                userPwd: 'admin'
+                userPwd: 'admin'  // NOSONAR
             }
             this.$get('/users/whistle', data).then(res => {
                 this.$message({
