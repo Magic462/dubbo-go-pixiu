@@ -260,7 +260,7 @@ export default {
         // return false
       } else if(!/^1[345678]\d{9}$/.test(this.phone)) {
         this.errors = {
-        phone:"请输入正确是手机号"
+        phone:"请输入正确的手机号"
       }
         // return false
       } else {
