@@ -18,6 +18,8 @@
 package main
 
 import (
+	config2 "github.com/apache/dubbo-go-pixiu/admin/config"
+	"github.com/apache/dubbo-go-pixiu/admin/core"
 	"github.com/apache/dubbo-go-pixiu/pkg/logger"
 	"os"
 	"os/signal"
@@ -27,11 +29,6 @@ import (
 
 import (
 	"github.com/spf13/cobra"
-)
-
-import (
-	"github.com/apache/dubbo-go-pixiu/pkg/admin/config"
-	"github.com/apache/dubbo-go-pixiu/pkg/admin/core"
 )
 
 var (
@@ -47,12 +44,12 @@ var (
 			"plugin management, service configuration, API key management, interface authority management \n" +
 			"(appKey authorization, interface authority, online and offline). \n" +
 			"(c) " + strconv.Itoa(time.Now().Year()) + " Dubbogo",
-		Version: config.Version,
+		Version: config2.Version,
 		PreRun: func(cmd *cobra.Command, args []string) {
 			initDefaultValue()
 		},
 		Run: func(cmd *cobra.Command, args []string) {
-			_, err := config.LoadAPIConfigFromFile(configPath)
+			_, err := config2.LoadAPIConfigFromFile(configPath)
 			if err != nil {
 				logger.Errorf("load admin config  error:%+v", err)
 			}
@@ -72,7 +69,7 @@ func Start() {
 }
 
 func Stop() {
-	config.CloseEtcdClient()
+	config2.CloseEtcdClient()
 }
 
 // init Init startCmd
