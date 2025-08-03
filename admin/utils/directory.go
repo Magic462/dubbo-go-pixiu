@@ -22,9 +22,11 @@ import (
 )
 
 import (
-	"github.com/apache/dubbo-go-pixiu/admin/global"
-
 	"go.uber.org/zap"
+)
+
+import (
+	"github.com/apache/dubbo-go-pixiu/admin/global"
 )
 
 func PathExists(path string) (bool, error) {

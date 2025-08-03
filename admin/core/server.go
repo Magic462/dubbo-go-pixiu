@@ -23,14 +23,16 @@ import (
 )
 
 import (
+	"go.uber.org/zap"
+
+	"v.marlon.life/toolkit/util"
+)
+
+import (
 	"github.com/apache/dubbo-go-pixiu/admin/config"
 	"github.com/apache/dubbo-go-pixiu/admin/global"
 	"github.com/apache/dubbo-go-pixiu/admin/initialize"
 	"github.com/apache/dubbo-go-pixiu/admin/logic/account"
-
-	"go.uber.org/zap"
-
-	"v.marlon.life/toolkit/util"
 )
 
 var (

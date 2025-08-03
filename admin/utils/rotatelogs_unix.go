@@ -26,11 +26,13 @@ import (
 )
 
 import (
-	"github.com/apache/dubbo-go-pixiu/admin/global"
-
 	zaprotatelogs "github.com/lestrrat-go/file-rotatelogs"
 
 	"go.uber.org/zap/zapcore"
+)
+
+import (
+	"github.com/apache/dubbo-go-pixiu/admin/global"
 )
 
 func GetWriteSyncer() (zapcore.WriteSyncer, error) {

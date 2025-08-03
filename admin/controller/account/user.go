@@ -23,13 +23,15 @@ import (
 )
 
 import (
-	"github.com/apache/dubbo-go-pixiu/admin/config"
-	"github.com/apache/dubbo-go-pixiu/admin/controller/auth"
-	"github.com/apache/dubbo-go-pixiu/admin/logic/account"
-
 	"github.com/dgrijalva/jwt-go"
 
 	"github.com/gin-gonic/gin"
+)
+
+import (
+	"github.com/apache/dubbo-go-pixiu/admin/config"
+	"github.com/apache/dubbo-go-pixiu/admin/controller/auth"
+	"github.com/apache/dubbo-go-pixiu/admin/logic/account"
 )
 
 // Logout user logout

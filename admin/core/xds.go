@@ -27,11 +27,6 @@ import (
 )
 
 import (
-	"github.com/apache/dubbo-go-pixiu/admin/config"
-	"github.com/apache/dubbo-go-pixiu/admin/logic"
-	"github.com/apache/dubbo-go-pixiu/pkg/common/constant"
-	"github.com/apache/dubbo-go-pixiu/pkg/logger"
-
 	fc "github.com/dubbo-go-pixiu/pixiu-api/pkg/api/config"
 	"github.com/dubbo-go-pixiu/pixiu-api/pkg/xds"
 	pixiupb "github.com/dubbo-go-pixiu/pixiu-api/pkg/xds/model"
@@ -56,6 +51,13 @@ import (
 	"google.golang.org/protobuf/types/known/anypb"
 	"google.golang.org/protobuf/types/known/structpb"
 	structpb2 "google.golang.org/protobuf/types/known/structpb"
+)
+
+import (
+	"github.com/apache/dubbo-go-pixiu/admin/config"
+	"github.com/apache/dubbo-go-pixiu/admin/logic"
+	"github.com/apache/dubbo-go-pixiu/pkg/common/constant"
+	"github.com/apache/dubbo-go-pixiu/pkg/logger"
 )
 
 var (

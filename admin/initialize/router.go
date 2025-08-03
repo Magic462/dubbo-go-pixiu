@@ -18,16 +18,18 @@
 package initialize
 
 import (
-	account2 "github.com/apache/dubbo-go-pixiu/admin/controller/account"
-	"github.com/apache/dubbo-go-pixiu/admin/controller/auth"
-	configInfo2 "github.com/apache/dubbo-go-pixiu/admin/controller/configInfo"
-	_ "github.com/apache/dubbo-go-pixiu/docs"
-
 	"github.com/gin-gonic/gin"
 
 	swaggerFiles "github.com/swaggo/files"
 
 	ginSwagger "github.com/swaggo/gin-swagger"
+)
+
+import (
+	account2 "github.com/apache/dubbo-go-pixiu/admin/controller/account"
+	"github.com/apache/dubbo-go-pixiu/admin/controller/auth"
+	configInfo2 "github.com/apache/dubbo-go-pixiu/admin/controller/configInfo"
+	_ "github.com/apache/dubbo-go-pixiu/docs"
 )
 
 // Routers init router

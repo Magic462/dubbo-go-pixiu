@@ -24,11 +24,13 @@ import (
 )
 
 import (
-	"github.com/apache/dubbo-go-pixiu/admin/global"
-	"github.com/apache/dubbo-go-pixiu/admin/utils"
-
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
+)
+
+import (
+	"github.com/apache/dubbo-go-pixiu/admin/global"
+	"github.com/apache/dubbo-go-pixiu/admin/utils"
 )
 
 var level zapcore.Level

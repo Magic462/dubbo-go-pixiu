@@ -25,16 +25,18 @@ import (
 )
 
 import (
-	config2 "github.com/apache/dubbo-go-pixiu/admin/config"
-	"github.com/apache/dubbo-go-pixiu/admin/logic"
-	"github.com/apache/dubbo-go-pixiu/pkg/common/yaml"
-	"github.com/apache/dubbo-go-pixiu/pkg/logger"
-
 	fc "github.com/dubbo-go-pixiu/pixiu-api/pkg/api/config"
 
 	"github.com/gin-gonic/gin"
 
 	"github.com/pkg/errors"
+)
+
+import (
+	config2 "github.com/apache/dubbo-go-pixiu/admin/config"
+	"github.com/apache/dubbo-go-pixiu/admin/logic"
+	"github.com/apache/dubbo-go-pixiu/pkg/common/yaml"
+	"github.com/apache/dubbo-go-pixiu/pkg/logger"
 )
 
 // GetBaseInfo get pixiu base info such as name,desc

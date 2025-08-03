@@ -25,10 +25,6 @@ import (
 )
 
 import (
-	"github.com/apache/dubbo-go-pixiu/admin/config"
-	"github.com/apache/dubbo-go-pixiu/pkg/common/yaml"
-	"github.com/apache/dubbo-go-pixiu/pkg/logger"
-
 	fc "github.com/dubbo-go-pixiu/pixiu-api/pkg/api/config"
 
 	gxetcd "github.com/dubbogo/gost/database/kv/etcd/v3"
@@ -36,6 +32,12 @@ import (
 	perrors "github.com/pkg/errors"
 
 	clientv3 "go.etcd.io/etcd/client/v3"
+)
+
+import (
+	"github.com/apache/dubbo-go-pixiu/admin/config"
+	"github.com/apache/dubbo-go-pixiu/pkg/common/yaml"
+	"github.com/apache/dubbo-go-pixiu/pkg/logger"
 )
 
 const (

@@ -24,9 +24,11 @@ import (
 )
 
 import (
-	"github.com/apache/dubbo-go-pixiu/admin/config"
-
 	_ "github.com/go-sql-driver/mysql"
+)
+
+import (
+	"github.com/apache/dubbo-go-pixiu/admin/config"
 )
 
 // MysqlDriver

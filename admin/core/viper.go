@@ -25,12 +25,14 @@ import (
 )
 
 import (
-	"github.com/apache/dubbo-go-pixiu/admin/global"
-	"github.com/apache/dubbo-go-pixiu/admin/utils"
-
 	"github.com/fsnotify/fsnotify"
 
 	"github.com/spf13/viper"
+)
+
+import (
+	"github.com/apache/dubbo-go-pixiu/admin/global"
+	"github.com/apache/dubbo-go-pixiu/admin/utils"
 )
 
 func Viper(path ...string) *viper.Viper {

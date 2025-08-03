@@ -24,16 +24,18 @@ import (
 )
 
 import (
-	"github.com/apache/dubbo-go-pixiu/admin/config"
-	"github.com/apache/dubbo-go-pixiu/admin/controller/auth"
-	"github.com/apache/dubbo-go-pixiu/admin/logic/account"
-	"github.com/apache/dubbo-go-pixiu/admin/utils"
-
 	"github.com/dgrijalva/jwt-go"
 
 	"github.com/gin-gonic/gin"
 
 	"github.com/pkg/errors"
+)
+
+import (
+	"github.com/apache/dubbo-go-pixiu/admin/config"
+	"github.com/apache/dubbo-go-pixiu/admin/controller/auth"
+	"github.com/apache/dubbo-go-pixiu/admin/logic/account"
+	"github.com/apache/dubbo-go-pixiu/admin/utils"
 )
 
 // @Tags Register

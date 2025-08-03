@@ -24,13 +24,15 @@ import (
 )
 
 import (
-	"github.com/apache/dubbo-go-pixiu/admin/config"
-
 	"github.com/dgrijalva/jwt-go"
 
 	"github.com/gin-gonic/gin"
 
 	"github.com/pkg/errors"
+)
+
+import (
+	"github.com/apache/dubbo-go-pixiu/admin/config"
 )
 
 // Check token
