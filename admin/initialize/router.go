@@ -22,6 +22,7 @@ import (
 	"github.com/apache/dubbo-go-pixiu/admin/controller/auth"
 	configInfo2 "github.com/apache/dubbo-go-pixiu/admin/controller/configInfo"
 	_ "github.com/apache/dubbo-go-pixiu/docs"
+
 	"github.com/gin-gonic/gin"
 
 	swaggerFiles "github.com/swaggo/files"

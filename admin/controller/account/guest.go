@@ -18,16 +18,17 @@
 package account
 
 import (
-	"github.com/apache/dubbo-go-pixiu/admin/config"
-	"github.com/apache/dubbo-go-pixiu/admin/controller/auth"
-	"github.com/apache/dubbo-go-pixiu/admin/logic/account"
-	"github.com/apache/dubbo-go-pixiu/admin/utils"
 	"log"
 	"net/http"
 	"time"
 )
 
 import (
+	"github.com/apache/dubbo-go-pixiu/admin/config"
+	"github.com/apache/dubbo-go-pixiu/admin/controller/auth"
+	"github.com/apache/dubbo-go-pixiu/admin/logic/account"
+	"github.com/apache/dubbo-go-pixiu/admin/utils"
+
 	"github.com/dgrijalva/jwt-go"
 
 	"github.com/gin-gonic/gin"

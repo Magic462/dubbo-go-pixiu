@@ -18,13 +18,14 @@
 package auth
 
 import (
-	"github.com/apache/dubbo-go-pixiu/admin/config"
 	"log"
 	"net/http"
 	"time"
 )
 
 import (
+	"github.com/apache/dubbo-go-pixiu/admin/config"
+
 	"github.com/dgrijalva/jwt-go"
 
 	"github.com/gin-gonic/gin"

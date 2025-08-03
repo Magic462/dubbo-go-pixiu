@@ -20,11 +20,12 @@ package database
 import (
 	"database/sql"
 	"fmt"
-	"github.com/apache/dubbo-go-pixiu/admin/config"
 	"sync"
 )
 
 import (
+	"github.com/apache/dubbo-go-pixiu/admin/config"
+
 	_ "github.com/go-sql-driver/mysql"
 )
 

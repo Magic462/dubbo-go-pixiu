@@ -19,6 +19,7 @@ package global
 
 import (
 	"github.com/apache/dubbo-go-pixiu/admin/config"
+
 	"github.com/spf13/viper"
 
 	"go.uber.org/zap"

@@ -20,13 +20,14 @@ package core
 import (
 	"flag"
 	"fmt"
-	"github.com/apache/dubbo-go-pixiu/admin/global"
-	"github.com/apache/dubbo-go-pixiu/admin/utils"
 	"os"
 	"path/filepath"
 )
 
 import (
+	"github.com/apache/dubbo-go-pixiu/admin/global"
+	"github.com/apache/dubbo-go-pixiu/admin/utils"
+
 	"github.com/fsnotify/fsnotify"
 
 	"github.com/spf13/viper"

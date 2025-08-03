@@ -20,13 +20,14 @@
 package utils
 
 import (
-	"github.com/apache/dubbo-go-pixiu/admin/global"
 	"os"
 	"path"
 	"time"
 )
 
 import (
+	"github.com/apache/dubbo-go-pixiu/admin/global"
+
 	zaprotatelogs "github.com/lestrrat-go/file-rotatelogs"
 
 	"go.uber.org/zap/zapcore"

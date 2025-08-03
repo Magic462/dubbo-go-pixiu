@@ -19,13 +19,13 @@ package logic
 
 import (
 	"errors"
-	"github.com/apache/dubbo-go-pixiu/admin/config"
 	"regexp"
 	"strconv"
 	"strings"
 )
 
 import (
+	"github.com/apache/dubbo-go-pixiu/admin/config"
 	"github.com/apache/dubbo-go-pixiu/pkg/common/yaml"
 	"github.com/apache/dubbo-go-pixiu/pkg/logger"
 

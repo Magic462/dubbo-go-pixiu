@@ -18,11 +18,12 @@
 package utils
 
 import (
-	"github.com/apache/dubbo-go-pixiu/admin/global"
 	"os"
 )
 
 import (
+	"github.com/apache/dubbo-go-pixiu/admin/global"
+
 	"go.uber.org/zap"
 )
 
