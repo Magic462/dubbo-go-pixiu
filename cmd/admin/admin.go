@@ -18,9 +18,6 @@
 package main
 
 import (
-	config2 "github.com/apache/dubbo-go-pixiu/admin/config"
-	"github.com/apache/dubbo-go-pixiu/admin/core"
-	"github.com/apache/dubbo-go-pixiu/pkg/logger"
 	"os"
 	"os/signal"
 	"strconv"
@@ -29,6 +26,12 @@ import (
 
 import (
 	"github.com/spf13/cobra"
+)
+
+import (
+	config2 "github.com/apache/dubbo-go-pixiu/admin/config"
+	"github.com/apache/dubbo-go-pixiu/admin/core"
+	"github.com/apache/dubbo-go-pixiu/pkg/logger"
 )
 
 var (
